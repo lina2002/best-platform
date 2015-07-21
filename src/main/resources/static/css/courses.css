@@ -1,0 +1,12 @@
+div#coursescontainer {
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 20px;
+}
+
+div.course {
+    border-radius: 25px;
+    background-color: #8AC007;
+    border: 1px dotted black;
+    padding: 5px;
+}

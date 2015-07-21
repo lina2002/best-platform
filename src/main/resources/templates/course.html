@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Courses</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet"
+          th:href="@{/css/course.css}"
+          href="../../css/course.css"/>
+</head>
+<body>
+<div>
+    <h2 th:text="${course.name}"/>
+
+    <p th:text="${course.description}"/>
+
+    <button class="btn">Edit</button>
+</div>
+</body>
+</html>

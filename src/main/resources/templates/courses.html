@@ -3,12 +3,19 @@
 <head>
     <title>Courses</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet"
+          th:href="@{/css/courses.css}"
+          href="../../css/courses.css"/>
 </head>
 <body>
-<div th:each="course : ${courses}">
-    <h3 th:text="${course.name}"/>
+<h1>Courses:</h1>
+
+<div th:id="coursescontainer">
+    <div th:each="course : ${courses}" class="course">
+        <a th:href="@{'course'(id=${course.id})}"><h3 th:text="${course.name}"/></a>
 
     <p th:text="${course.description}"/>
+    </div>
 </div>
 </body>
 </html>
