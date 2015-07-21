@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<courses>
+    <course id="1">
+        <name>TDD</name>
+        <description>Learn best practices of test driven development</description>
+    </course>
+    <course id="2">
+        <name>Java</name>
+        <description>Basics of Java</description>
+    </course>
+    <course id="3">
+        <name>Databases</name>
+        <description>Relational databases overview</description>
+    </course>
+</courses>
