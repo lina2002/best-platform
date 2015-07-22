@@ -1,13 +1,13 @@
 import org.junit.Test;
 import platform.Course;
-import platform.XMLParser;
+import platform.XMLParserImpl;
 
 import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 
-public class XMLParserTest {
-    private XMLParser xmlParser = new XMLParser("test.xml");
+public class XMLParserImplTest {
+    private XMLParserImpl xmlParser = new XMLParserImpl("test.xml");
 
     private List<Course> courses = xmlParser.parseXML();
 

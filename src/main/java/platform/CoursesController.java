@@ -9,7 +9,7 @@ import java.util.List;
 
 @Controller
 public class CoursesController {
-    private XMLParser xmlParser = new XMLParser("courses.xml");
+    private XMLParser xmlParser = new XMLParserImpl("courses.xml");
 
     @RequestMapping("/greeting")
     public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
@@ -25,10 +25,8 @@ public class CoursesController {
 
     @RequestMapping("/course")
     public void course(@RequestParam(value = "id", required = false) String idFromGet, Model model) {
-        List<Course> courses = xmlParser.parseXML();
         int id = parseId(idFromGet);
-        Course course = courses.stream().filter(x -> x.getId() == id).findAny().orElse(Course.getNoSuchCourse());
-        model.addAttribute("course", course);
+        model.addAttribute("course", xmlParser.getCourseByID(id));
     }
 
     private int parseId(String idFromGet) {
