@@ -5,6 +5,14 @@ public class Course {
     private String name;
     private String description;
 
+    public static Course getNoSuchCourse() {
+        Course noSuchCourse = new Course();
+        noSuchCourse.setName("No such course");
+        noSuchCourse.setDescription("");
+        noSuchCourse.setId(-1);
+        return noSuchCourse;
+    }
+
     public int getId() {
         return id;
     }

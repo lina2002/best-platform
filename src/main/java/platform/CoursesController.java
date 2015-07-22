@@ -23,4 +23,22 @@ public class CoursesController {
         model.addAttribute("courses", courses);
     }
 
+    @RequestMapping("/course")
+    public void course(@RequestParam(value = "id", required = false) String idFromGet, Model model) {
+        List<Course> courses = xmlParser.parseXML();
+        int id = parseId(idFromGet);
+        Course course = courses.stream().filter(x -> x.getId() == id).findAny().orElse(Course.getNoSuchCourse());
+        model.addAttribute("course", course);
+    }
+
+    private int parseId(String idFromGet) {
+        int id = -1;
+        try {
+            id = Integer.parseInt(idFromGet);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
 }
