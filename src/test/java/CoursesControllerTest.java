@@ -14,21 +14,19 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class CoursesControllerTest {
     @Mock Model model;
+    private CoursesController coursesController = new CoursesController();
+    ArgumentCaptor<Course> argument = ArgumentCaptor.forClass(Course.class);
 
     @Test
     public void shouldReturnNoSuchCourseIDWhenNonExistingIDIsGiven() throws Exception {
-        CoursesController coursesController = new CoursesController();
         coursesController.course("-120", model);
-        ArgumentCaptor<Course> argument = ArgumentCaptor.forClass(Course.class);
         verify(model).addAttribute(anyString(),argument.capture());
         assertEquals(-1, argument.getValue().getId());
     }
 
     @Test
     public void shouldReturnNoSuchCourseIDWhenNullAsIDIsGiven() throws Exception {
-        CoursesController coursesController = new CoursesController();
         coursesController.course(null, model);
-        ArgumentCaptor<Course> argument = ArgumentCaptor.forClass(Course.class);
         verify(model).addAttribute(anyString(),argument.capture());
         assertEquals(-1, argument.getValue().getId());
     }

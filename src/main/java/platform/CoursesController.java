@@ -28,14 +28,15 @@ public class CoursesController {
 
     @RequestMapping("/course")
     public void course(@RequestParam(value = "id", required = false) String idFromGet, Model model) {
-        int id = parseId(idFromGet);
+        int id = parseId(idFromGet,-1);
         model.addAttribute("course", xmlParser.getCourseByID(id));
     }
 
-    @RequestMapping(value="/edit", method=RequestMethod.GET)
-    public void editForm(@ModelAttribute Course course, Model model) {
+    @RequestMapping(value="/edit")
+    public void editForm(@RequestParam(value = "id", required = false) String idFromGet, Model model) {
         model.addAttribute("editInformation","");
-        model.addAttribute("course", course);
+        int id = parseId(idFromGet,-1);
+        model.addAttribute("course", xmlParser.getCourseByID(id));
     }
 
     @RequestMapping(value="/edit", method=RequestMethod.POST)
@@ -51,12 +52,13 @@ public class CoursesController {
 
     }
 
-    private int parseId(String idFromGet) {
-        int id = -1;
-        try {
-            id = Integer.parseInt(idFromGet);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
+    private int parseId(String idFromGet,int defaultValue) {
+        int id = defaultValue;
+        if(idFromGet!=null) {
+            try {
+                id = Integer.parseInt(idFromGet);
+            } catch (NumberFormatException e) {
+            }
         }
         return id;
     }
