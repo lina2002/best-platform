@@ -30,6 +30,11 @@ public class CoursesController {
         Course course = courses.stream().filter(x -> x.getId() == id).findAny().orElse(Course.getNoSuchCourse());
         model.addAttribute("course", course);
     }
+    
+    @RequestMapping("/login")
+    public void login(Model model) {
+
+    }
 
     private int parseId(String idFromGet) {
         int id = -1;

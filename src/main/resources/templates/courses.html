@@ -14,8 +14,11 @@
     <div th:each="course : ${courses}" class="course">
         <a th:href="@{'course'(id=${course.id})}"><h3 th:text="${course.name}"/></a>
 
-    <p th:text="${course.description}"/>
+        <p th:text="${course.description}" id="description"/>
     </div>
 </div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

@@ -9,4 +9,15 @@ div.course {
     background-color: #8AC007;
     border: 1px dotted black;
     padding: 5px;
+    -webkit-box-shadow: 10px 10px 22px 9px rgba(60, 60, 60, 1);
+    -moz-box-shadow:    10px 10px 22px 9px rgba(60, 60, 60, 1);
+    box-shadow:         10px 10px 22px 9px rgba(60, 60, 60, 1);
+}
+p#description{
+border-radius: 10px;
+    background-color: #CCFF99;
+    padding: 5px;
+    -webkit-box-shadow: 1px 1px 22px 9px rgba(200, 200, 200, 255);
+    -moz-box-shadow:    1px 1px 22px 9px rgba(200, 200, 200, 255);
+    box-shadow:         1px 1px 22px 9px rgba(200, 200, 200, 255);
 }
