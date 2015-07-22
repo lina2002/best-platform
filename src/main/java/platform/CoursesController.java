@@ -28,6 +28,11 @@ public class CoursesController {
         int id = parseId(idFromGet);
         model.addAttribute("course", xmlParser.getCourseByID(id));
     }
+    
+    @RequestMapping("/login")
+    public void login(Model model) {
+
+    }
 
     private int parseId(String idFromGet) {
         int id = -1;
