@@ -4,6 +4,7 @@
 *.iml
 *.class
 /target
-./idea
+.idea/*
+courses.xml
 
 
