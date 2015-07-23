@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         The following java security config:
         -allows all static css,images and scripts to everyone
         -defines two roles: USER and ADMIN
-        -only allows role ADMIN to view /greeting
+        -only allows role ADMIN to view /edit
          */
 
         http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();

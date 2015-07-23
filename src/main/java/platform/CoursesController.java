@@ -13,6 +13,10 @@ import java.util.List;
 public class CoursesController {
     private final String inputFileName = "courses.xml";
     private XMLParser xmlParser = new XMLParserImpl(inputFileName);
+    @RequestMapping("/")
+    public String index() {
+        return "redirect:/courses";
+    }
 
     @RequestMapping("/greeting")
     public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
