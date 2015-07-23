@@ -12,7 +12,8 @@ import java.util.List;
 @Controller
 public class CoursesController {
     private final String inputFileName = "courses.xml";
-    private XMLParser xmlParser = new XMLParserImpl(inputFileName);
+    private final XMLParser xmlParser = new XMLParserImpl(inputFileName);
+    private final XMLEditor xmlEditor = new XMLEditorImpl(inputFileName);
 
     @RequestMapping("/")
     public String index() {
@@ -33,24 +34,35 @@ public class CoursesController {
 
     @RequestMapping("/course")
     public void course(@RequestParam(value = "id", required = false) String courseId, Model model) {
-        addCourse(courseId, model);
+        addCourseToModel(courseId, model);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public void formForCourseEditing(@RequestParam(value = "id", required = false) String courseId, Model model) {
         model.addAttribute("courseHasBeenSavedInfo", "");
-        addCourse(courseId, model);
+        addCourseToModel(courseId, model);
     }
 
-    private void addCourse(String courseId, Model model) {
+    private void addCourseToModel(String courseId, Model model) {
         int id = parseId(courseId, -1);
         model.addAttribute("course", xmlParser.getCourseByID(id));
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public void submitEditedCourse(@ModelAttribute("course") Course course, Model model) {
-        XMLEditor xmlEditor = new XMLEditorImpl(inputFileName);
         xmlEditor.update(course);
+        model.addAttribute("courseHasBeenSavedInfo", "Course has been saved.");
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
+    public void formForAddingCourse(Model model) {
+        model.addAttribute("courseHasBeenSavedInfo", "");
+        model.addAttribute("course", new Course());
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public void submitAddedCourse(@ModelAttribute("course") Course course, Model model) {
+        xmlEditor.add(course);
         model.addAttribute("courseHasBeenSavedInfo", "Course has been saved.");
     }
 

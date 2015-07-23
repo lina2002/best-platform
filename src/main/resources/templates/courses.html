@@ -16,18 +16,21 @@
 
         <p th:text="${course.description}" id="description"/>
     </div>
-<div id="loginButton">
-<div sec:authorize="isAuthenticated()">
-    <form th:action="@{/logout}" method="post">
-        <input type="submit" value="Sign Out" class="btn"/>
-    </form>
-</div>
-<div sec:authorize="isAnonymous()">
-    <form th:action="@{/login}" method="post">
-        <input type="submit" value="Log In" class="btn"/>
-    </form>
-</div>
-</div>
+    <div id="loginButton">
+        <div sec:authorize="isAuthenticated()">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out" class="btn"/>
+            </form>
+        </div>
+        <div sec:authorize="isAnonymous()">
+            <form th:action="@{/login}" method="post">
+                <input type="submit" value="Log In" class="btn"/>
+            </form>
+        </div>
+    </div>
+    <a th:href="@{'add'}">
+        <button class="btn">Add course</button>
+    </a>
 </div>
 </body>
 </html>

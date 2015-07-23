@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Courses</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet"
+          th:href="@{/css/edit.css}"
+          href="../../css/edit.css"/>
+</head>
+<body>
+<h1>Add</h1>
+
+<form action="#" th:action="@{/add}" th:object="${course}" method="post">
+    <div class="container">
+        <p>Name: <input type="text" th:field="*{name}"/></p>
+        <textarea rows="4" cols="50" th:field="*{description}"></textarea>
+
+        <p th:text="${courseHasBeenSavedInfo}"/>
+
+        <p><input type="submit" value="Submit" class="btn"/> <input type="reset" value="Reset" class="btn"/></p>
+    </div>
+</form>
+</body>
+</html>
