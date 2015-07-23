@@ -13,6 +13,7 @@ import java.util.List;
 public class CoursesController {
     private final String inputFileName = "courses.xml";
     private XMLParser xmlParser = new XMLParserImpl(inputFileName);
+
     @RequestMapping("/")
     public String index() {
         return "redirect:/courses";
@@ -35,22 +36,22 @@ public class CoursesController {
         addCourse(courseId, model);
     }
 
-    @RequestMapping(value="/edit", method=RequestMethod.GET)
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public void formForCourseEditing(@RequestParam(value = "id", required = false) String courseId, Model model) {
-        model.addAttribute("courseHasBeenSavedInfo","");
+        model.addAttribute("courseHasBeenSavedInfo", "");
         addCourse(courseId, model);
     }
 
     private void addCourse(String courseId, Model model) {
-        int id = parseId(courseId,-1);
+        int id = parseId(courseId, -1);
         model.addAttribute("course", xmlParser.getCourseByID(id));
     }
 
-    @RequestMapping(value="/edit", method=RequestMethod.POST)
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public void submitEditedCourse(@ModelAttribute("course") Course course, Model model) {
         XMLEditor xmlEditor = new XMLEditorImpl(inputFileName);
         xmlEditor.update(course);
-        model.addAttribute("courseHasBeenSavedInfo","Course has been saved.");
+        model.addAttribute("courseHasBeenSavedInfo", "Course has been saved.");
     }
 
     @RequestMapping("/login")
@@ -58,9 +59,9 @@ public class CoursesController {
 
     }
 
-    private int parseId(String idFromGet,int defaultValue) {
+    private int parseId(String idFromGet, int defaultValue) {
         int id = defaultValue;
-        if(idFromGet!=null) {
+        if (idFromGet != null) {
             try {
                 id = Integer.parseInt(idFromGet);
             } catch (NumberFormatException e) {
