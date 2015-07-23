@@ -4,17 +4,19 @@
     <title>Courses</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet"
-          th:href="@{/css/course.css}"
-          href="../../css/course.css"/>
+          th:href="@{/css/edit.css}"
+          href="../../css/edit.css"/>
 </head>
 <body>
 <h1>Edit</h1>
 <form action="#" th:action="@{/edit}" th:object="${course}" method="post">
-    <p>Id: <input type="text" th:field="*{id}" /></p>
-    <p>Name: <input type="text" th:field="*{name}" /></p>
-    <p>Description: <input type="text" th:field="*{description}" /></p>
+    <div class="container">
+    <p> Id: <input type="text" th:field="*{id}" />
+        Name: <input type="text" th:field="*{name}" /></p>
+    <textarea rows="4" cols="50" th:field="*{description}"></textarea>
     <p th:text="${courseHasBeenSavedInfo}"/>
     <p><input type="submit" value="Submit" class="btn" /> <input type="reset" value="Reset" class="btn" /></p>
+    </div>
 </form>
 </body>
 </html>
