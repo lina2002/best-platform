@@ -27,24 +27,26 @@ public class CoursesController {
     }
 
     @RequestMapping("/course")
-    public void course(@RequestParam(value = "id", required = false) String idFromGet, Model model) {
-        int id = parseId(idFromGet,-1);
-        model.addAttribute("course", xmlParser.getCourseByID(id));
+    public void course(@RequestParam(value = "id", required = false) String courseId, Model model) {
+        addCourse(courseId, model);
     }
 
-    @RequestMapping(value="/edit")
-    public void editForm(@RequestParam(value = "id", required = false) String idFromGet, Model model) {
-        model.addAttribute("editInformation","");
-        int id = parseId(idFromGet,-1);
+    @RequestMapping(value="/edit", method=RequestMethod.GET)
+    public void formForCourseEditing(@RequestParam(value = "id", required = false) String courseId, Model model) {
+        model.addAttribute("courseHasBeenSavedInfo","");
+        addCourse(courseId, model);
+    }
+
+    private void addCourse(String courseId, Model model) {
+        int id = parseId(courseId,-1);
         model.addAttribute("course", xmlParser.getCourseByID(id));
     }
 
     @RequestMapping(value="/edit", method=RequestMethod.POST)
-    public void editSubmit(@ModelAttribute Course course, Model model) {
+    public void submitEditedCourse(@ModelAttribute("course") Course course, Model model) {
         XMLEditor xmlEditor = new XMLEditorImpl(inputFileName);
         xmlEditor.update(course);
-        model.addAttribute("editInformation","Course has been saved.");
-        model.addAttribute("course", course);
+        model.addAttribute("courseHasBeenSavedInfo","Course has been saved.");
     }
 
     @RequestMapping("/login")
