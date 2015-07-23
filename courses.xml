@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<courses>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><courses>
     <course id="1">
-        <name>TDD</name>
+        <name>TDDBYK</name>
         <description>Learn best practices of test driven development</description>
     </course>
     <course id="2">

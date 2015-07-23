@@ -13,9 +13,9 @@
 
     <p th:text="${course.description}"/>
 
-    <form action="#" th:action="@{'edit'(id=${course.id})}" method="link">
-        <input class="btn" type="submit" value="Edit" />
-    </form>
+    <a th:href="@{'edit'(id=${course.id})}">
+        <button class="btn">Edit</button>
+    </a>
 </div>
 </body>
 </html>
