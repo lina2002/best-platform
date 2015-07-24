@@ -14,7 +14,7 @@ public class UserController {
         setUsernameAttribute(model, request);
     }
 
-    private void setUsernameAttribute( final Model model, final HttpServletRequest request) {
+    private void setUsernameAttribute(final Model model, final HttpServletRequest request) {
         model.addAttribute("username", request.getRemoteUser());
     }
 

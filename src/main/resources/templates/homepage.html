@@ -9,9 +9,13 @@
 </head>
 <body>
 <h1>Homepage</h1>
-<h2>Hello <div th:text="${username}"> </div></h2>
+
+<h2>Hello
+    <div th:text="${username}"></div>
+</h2>
 <ul>
-    <li sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{'add'}" sec:authorize="hasRole('ROLE_ADMIN')"> Add a new course</a></li>
+    <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{'add'}" sec:authorize="hasRole('ROLE_ADMIN')"> Add a new
+        course</a></li>
     <li>Change password</li>
 </ul>
 
