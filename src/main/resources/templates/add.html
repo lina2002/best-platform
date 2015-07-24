@@ -18,7 +18,11 @@
         <p th:text="${courseHasBeenSavedInfo}"/>
 
         <p><input type="submit" value="Submit" class="btn"/> <input type="reset" value="Reset" class="btn"/></p>
-    </div>
+
 </form>
+<a th:href="@{'/courses'}">
+    <button class="btn-back">back</button>
+</a>
+</div>
 </body>
 </html>
