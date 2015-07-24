@@ -20,12 +20,6 @@ public class CoursesController {
         return "redirect:/courses";
     }
 
-    @RequestMapping("/greeting")
-    public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") final String name, final Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
-    }
-
     @RequestMapping("/courses")
     public void courses(final Model model) {
         List<Course> courses = xmlParser.parseXML();
