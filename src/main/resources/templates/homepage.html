@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Homepage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet"
+          th:href="@{/css/courses.css}"
+          href="../../css/courses.css"/>
+</head>
+<body>
+<h1>Homepage</h1>
+<h2>Hello <div th:text="${username}"> </div></h2>
+<ul>
+    <li sec:authorize="hasRole('ROLE_ADMIN')"> <a th:href="@{'add'}" sec:authorize="hasRole('ROLE_ADMIN')"> Add a new course</a></li>
+    <li>Change password</li>
+</ul>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out" class="btn"/>
+</form>
+</body>
+</html>

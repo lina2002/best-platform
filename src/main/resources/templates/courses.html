@@ -28,7 +28,7 @@
             </form>
         </div>
     </div>
-    <a th:href="@{'add'}">
+    <a th:href="@{'add'}" sec:authorize="hasRole('ROLE_ADMIN')">
         <button class="btn">Add course</button>
     </a>
 </div>
