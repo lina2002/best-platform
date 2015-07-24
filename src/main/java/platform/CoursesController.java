@@ -50,6 +50,12 @@ public class CoursesController {
         model.addAttribute("courseHasBeenSavedInfo", "Course has been saved.");
     }
 
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    public String removeCourse(@ModelAttribute("course") final Course course, final Model model) {
+        xmlEditor.remove(course.getId());
+        return "redirect:/courses";
+    }
+
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public void formForAddingCourse(final Model model) {
         model.addAttribute("courseHasBeenSavedInfo", "");

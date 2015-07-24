@@ -21,6 +21,12 @@
     <a th:href="@{'edit'(id=${course.id})}" sec:authorize="hasRole('ROLE_ADMIN')">
         <button class="btn-edit">Edit</button>
     </a>
+
+    <form action="#" th:action="@{/remove}" th:object="${course}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
+        <p><input type="hidden" th:field="*{id}" readonly="readonly"/></p>
+
+        <p><input type="submit" value="Remove" class="btn-edit"/></p>
+    </form>
 </div>
 </body>
 </html>
