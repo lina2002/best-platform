@@ -12,12 +12,4 @@
         <name>Databases</name>
         <description>Relational databases overview</description>
     </course>
-    <course id="4">
-        <name>Test</name>
-        <description>Testing</description>
-    </course>
-    <course id="5">
-        <name>Samiec</name>
-        <description>Moj</description>
-    </course>
 </courses>

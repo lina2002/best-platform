@@ -12,7 +12,7 @@
 
 <form action="#" th:action="@{/edit}" th:object="${course}" method="post">
     <div class="container">
-        <p><input type="hidden" th:field="*{id}"/>
+        <p><input type="hidden" th:field="*{id}" readonly="readonly"/>
             Name: <input type="text" th:field="*{name}"/></p>
         <textarea rows="4" cols="50" th:field="*{description}"></textarea>
 
