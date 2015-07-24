@@ -44,8 +44,16 @@ public class CoursesController {
     }
 
     private void addCourseToModel(final String courseId, final Model model) {
-        int id = parseId(courseId, -1);
-        model.addAttribute("course", xmlParser.getCourseByID(id));
+        try {
+            int id = Integer.parseInt(courseId);
+            Course course = xmlParser.getCourseByID(id);
+            if(course!=null) {
+                model.addAttribute("course", course);
+                model.addAttribute("courseExists", true);
+                return;
+            }
+        } catch (NumberFormatException e) {
+        }
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
@@ -76,16 +84,4 @@ public class CoursesController {
     public void login(final Model model) {
 
     }
-
-    private int parseId(final String idFromGet, final int defaultValue) {
-        int id = defaultValue;
-        if (idFromGet != null) {
-            try {
-                id = Integer.parseInt(idFromGet);
-            } catch (NumberFormatException e) {
-            }
-        }
-        return id;
-    }
-
 }

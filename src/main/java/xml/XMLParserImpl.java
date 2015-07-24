@@ -36,7 +36,7 @@ public class XMLParserImpl implements XMLParser {
     @Override
     public Course getCourseByID(final int id) {
         courses = parseXML();
-        return courses.stream().filter(x -> x.getId() == id).findAny().orElse(Course.getNoSuchCourse());
+        return courses.stream().filter(x -> x.getId() == id).findAny().orElse(null);
     }
 
     List<Course> tryToParseXML() throws Exception {

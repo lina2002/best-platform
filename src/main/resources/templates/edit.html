@@ -18,14 +18,12 @@
             Name: <input type="text" th:field="*{name}"/></p>
         <textarea rows="4" cols="50" th:field="*{description}"></textarea>
 
-        <p th:text="${courseHasBeenSavedInfo}"/>
-
         <p><input type="submit" value="Submit" class="btn"/> <input type="reset" value="Reset" class="btn"/></p>
     </form>
     <a th:href="@{'/course'(id=${course.id})}">
         <button class="btn-back">back</button>
     </a>
-
+    <p th:text="${courseHasBeenSavedInfo}"/>
 </div>
 </body>
 </html>
