@@ -1,3 +1,12 @@
+div#homepage {
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 15px;
+    margin-bottom:15px
+    text-decoration:none;
+    float:right;
+    text-size:12pt;
+}
 div#coursescontainer {
     border-radius: 25px;
     border: 2px solid black;

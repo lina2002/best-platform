@@ -8,13 +8,10 @@
           href="../../css/courses.css"/>
 </head>
 <body>
-<h1>Courses:</h1>
-
-
-<div class="btn" sec:authorize="isAuthenticated()">
+<div id="homepage" sec:authorize="isAuthenticated()">
     <a th:href="@{'homepage'}" sec:authorize="hasRole('ROLE_ADMIN')" th:text="${username}"> </a>
 </div>
-
+<h1>Courses:</h1>
 <div th:id="coursescontainer">
     <div th:each="course : ${courses}" class="course">
         <a th:href="@{'course'(id=${course.id})}"><h3 th:text="${course.name}"/></a>
