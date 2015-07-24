@@ -18,7 +18,7 @@ public class XMLEditorImpl implements XMLEditor {
     private File file;
     private int lastId;
 
-    public XMLEditorImpl(String fileName) {
+    public XMLEditorImpl(final String fileName) {
         this.file = new File(fileName);
         try {
             Document document = getDocument();
@@ -30,20 +30,8 @@ public class XMLEditorImpl implements XMLEditor {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        XMLEditor xmlEditor = new XMLEditorImpl("courses.xml");
-        Course course = new Course();
-        course.setId(4);
-        course.setName("Testing");
-        course.setDescription("Something smart");
-        xmlEditor.add(course);
-        xmlEditor.remove(1);
-        course.setDescription("Something stupid");
-        xmlEditor.update(course);
-    }
-
     @Override
-    public void update(Course course) {
+    public void update(final Course course) {
         try {
             tryToUpdate(course);
         } catch (Exception e) {
@@ -52,7 +40,7 @@ public class XMLEditorImpl implements XMLEditor {
     }
 
     @Override
-    public void remove(int courseId) {
+    public void remove(final int courseId) {
         try {
             tryToRemove(courseId);
         } catch (Exception e) {
@@ -61,7 +49,7 @@ public class XMLEditorImpl implements XMLEditor {
     }
 
     @Override
-    public void add(Course course) {
+    public void add(final Course course) {
         try {
             tryToAdd(course);
         } catch (Exception e) {
@@ -69,19 +57,19 @@ public class XMLEditorImpl implements XMLEditor {
         }
     }
 
-    private void tryToAdd(Course course) throws Exception {
+    private void tryToAdd(final Course course) throws Exception {
         Document document = getDocument();
         addCourseToDocument(course, document);
         save(document);
     }
 
-    private void addCourseToDocument(Course course, Document document) {
+    private void addCourseToDocument(final Course course, final Document document) {
         Node coursesNode = document.getFirstChild();
         Element newCourseNode = createNewElementRepresentingGivenCourse(document, course);
         coursesNode.appendChild(newCourseNode);
     }
 
-    private Element createNewElementRepresentingGivenCourse(Document document, Course course) {
+    private Element createNewElementRepresentingGivenCourse(final Document document, final Course course) {
         Element newCourseElement = document.createElement("course");
         newCourseElement.setAttribute("id", getNextId().toString());
         Element newCourseNameNode = document.createElement("name");
@@ -97,25 +85,25 @@ public class XMLEditorImpl implements XMLEditor {
         return ++lastId;
     }
 
-    private void tryToUpdate(Course course) throws Exception {
+    private void tryToUpdate(final Course course) throws Exception {
         Document document = getDocument();
         updateCourseInDocument(course, document);
         save(document);
     }
 
-    private void tryToRemove(int courseId) throws Exception {
+    private void tryToRemove(final int courseId) throws Exception {
         Document document = getDocument();
         removeCourseFromDocument(courseId, document);
         save(document);
     }
 
-    private void removeCourseFromDocument(int courseId, Document document) {
+    private void removeCourseFromDocument(final int courseId, final Document document) {
         Node coursesNode = document.getFirstChild();
         Node courseToRemove = getCourseById(coursesNode, courseId);
         coursesNode.removeChild(courseToRemove);
     }
 
-    private Node getCourseById(Node coursesNode, int courseId) {
+    private Node getCourseById(final Node coursesNode, final int courseId) {
         NodeList courses = coursesNode.getChildNodes();
         for (int i = 1; i < courses.getLength(); i += 2) {
             Node currentCourse = courses.item(i);
@@ -136,7 +124,7 @@ public class XMLEditorImpl implements XMLEditor {
         return documentBuilder.parse(file);
     }
 
-    private void updateCourseInDocument(Course course, Document document) {
+    private void updateCourseInDocument(final Course course, final Document document) {
         Node coursesNode = document.getFirstChild();
         Node courseToUpdate = getCourseById(coursesNode, course.getId());
         NodeList properties = courseToUpdate.getChildNodes();
@@ -144,7 +132,7 @@ public class XMLEditorImpl implements XMLEditor {
         properties.item(3).setTextContent(course.getDescription());
     }
 
-    private void save(Document document) throws Exception {
+    private void save(final Document document) throws Exception {
         TransformerFactory transformerFactory =
                 TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer();

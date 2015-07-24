@@ -21,57 +21,57 @@ public class CoursesController {
     }
 
     @RequestMapping("/greeting")
-    public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
+    public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") final String name, final Model model) {
         model.addAttribute("name", name);
         return "greeting";
     }
 
     @RequestMapping("/courses")
-    public void courses(Model model) {
+    public void courses(final Model model) {
         List<Course> courses = xmlParser.parseXML();
         model.addAttribute("courses", courses);
     }
 
     @RequestMapping("/course")
-    public void course(@RequestParam(value = "id", required = false) String courseId, Model model) {
+    public void course(@RequestParam(value = "id", required = false) final String courseId, final Model model) {
         addCourseToModel(courseId, model);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public void formForCourseEditing(@RequestParam(value = "id", required = false) String courseId, Model model) {
+    public void formForCourseEditing(@RequestParam(value = "id", required = false) final String courseId, final Model model) {
         model.addAttribute("courseHasBeenSavedInfo", "");
         addCourseToModel(courseId, model);
     }
 
-    private void addCourseToModel(String courseId, Model model) {
+    private void addCourseToModel(final String courseId, final Model model) {
         int id = parseId(courseId, -1);
         model.addAttribute("course", xmlParser.getCourseByID(id));
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public void submitEditedCourse(@ModelAttribute("course") Course course, Model model) {
+    public void submitEditedCourse(@ModelAttribute("course") final Course course, final Model model) {
         xmlEditor.update(course);
         model.addAttribute("courseHasBeenSavedInfo", "Course has been saved.");
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public void formForAddingCourse(Model model) {
+    public void formForAddingCourse(final Model model) {
         model.addAttribute("courseHasBeenSavedInfo", "");
         model.addAttribute("course", new Course());
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public void submitAddedCourse(@ModelAttribute("course") Course course, Model model) {
+    public void submitAddedCourse(@ModelAttribute("course") final Course course, final Model model) {
         xmlEditor.add(course);
         model.addAttribute("courseHasBeenSavedInfo", "Course has been saved.");
     }
 
     @RequestMapping("/login")
-    public void login(Model model) {
+    public void login(final Model model) {
 
     }
 
-    private int parseId(String idFromGet, int defaultValue) {
+    private int parseId(final String idFromGet, final int defaultValue) {
         int id = defaultValue;
         if (idFromGet != null) {
             try {

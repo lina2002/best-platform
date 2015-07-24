@@ -26,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/courses", "/course","/greeting").permitAll();
+                .antMatchers("/", "/courses", "/course", "/greeting").permitAll();
         http
                 .authorizeRequests()
                 .antMatchers("/edit")
@@ -43,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(final AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
                 .withUser("user").password("password").roles("USER");

@@ -19,7 +19,7 @@ public class XMLParserImpl implements XMLParser {
     private NodeList nodes;
     private List<Course> courses;
 
-    public XMLParserImpl(String inputFileName) {
+    public XMLParserImpl(final String inputFileName) {
         this.inputFileName = inputFileName;
     }
 
@@ -33,9 +33,9 @@ public class XMLParserImpl implements XMLParser {
     }
 
     @Override
-    public Course getCourseByID(int id) {
+    public Course getCourseByID(final int id) {
         courses = parseXML();
-        return courses.stream().filter(x->x.getId()==id).findAny().orElse(Course.getNoSuchCourse());
+        return courses.stream().filter(x -> x.getId() == id).findAny().orElse(Course.getNoSuchCourse());
     }
 
     List<Course> tryToParseXML() throws Exception {
@@ -71,7 +71,7 @@ public class XMLParserImpl implements XMLParser {
         nodes = (NodeList) xPath.compile(expression).evaluate(document, XPathConstants.NODESET);
     }
 
-    private String getValueByName(Element element, String name) {
+    private String getValueByName(final Element element, final String name) {
         return element
                 .getElementsByTagName(name)
                 .item(0)
