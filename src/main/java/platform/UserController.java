@@ -11,11 +11,8 @@ public class UserController {
 
     @RequestMapping("/homepage")
     public void homepage(final Model model, final HttpServletRequest request) {
-        setUsernameAttribute(model, request);
-    }
-
-    private void setUsernameAttribute(final Model model, final HttpServletRequest request) {
         model.addAttribute("username", request.getRemoteUser());
     }
+
 
 }

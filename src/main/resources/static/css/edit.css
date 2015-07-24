@@ -52,6 +52,7 @@ div.container {
     background: #55ff00;
     text-decoration: none;
 }
+
 .btn-back {
     background: #70d934;
     background-image: -webkit-linear-gradient(top, #70d934, #389e16);
@@ -70,7 +71,7 @@ div.container {
     font-size: 20px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-    float:right
+    float: right
 }
 
 .btn-back:hover {

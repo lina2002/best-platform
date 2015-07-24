@@ -22,6 +22,7 @@
     background: #55ff00;
     text-decoration: none;
 }
+
 .btn-back {
     background: #70d934;
     background-image: -webkit-linear-gradient(top, #70d934, #389e16);
@@ -40,17 +41,18 @@
     font-size: 20px;
     padding: 10px 20px 10px 20px;
     text-decoration: none;
-    padding-bottom:15px;
+    padding-bottom: 15px;
 }
 
 .btn-back:hover {
     background: #55ff00;
     text-decoration: none;
 }
-div#container{
-    width:90%;
-    height:60%;
-   border-radius: 25px;
+
+div#container {
+    width: 90%;
+    height: 60%;
+    border-radius: 25px;
     background-color: EDFFC7;
     border: 1px dotted black;
     padding: 5px;
@@ -58,6 +60,7 @@ div#container{
     -moz-box-shadow: 10px 10px 22px 9px rgba(60, 60, 60, 1);
     box-shadow: 10px 10px 22px 9px rgba(60, 60, 60, 1);
 }
-p.authinfo{
-    float:right;
+
+p.authinfo {
+    float: right;
 }

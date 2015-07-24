@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -21,9 +22,10 @@ public class CoursesController {
     }
 
     @RequestMapping("/courses")
-    public void courses(final Model model) {
+    public void courses(final Model model, final HttpServletRequest request) {
         List<Course> courses = xmlParser.parseXML();
         model.addAttribute("courses", courses);
+        model.addAttribute("username", request.getRemoteUser());
     }
 
     @RequestMapping("/course")

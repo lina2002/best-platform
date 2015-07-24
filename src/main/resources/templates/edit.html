@@ -10,8 +10,9 @@
 <body>
 
 <div class="container">
-<h1>Edit</h1>
-<form action="#" th:action="@{/edit}" th:object="${course}" method="post">
+    <h1>Edit</h1>
+
+    <form action="#" th:action="@{/edit}" th:object="${course}" method="post">
 
         <p><input type="hidden" th:field="*{id}" readonly="readonly"/>
             Name: <input type="text" th:field="*{name}"/></p>
@@ -20,11 +21,11 @@
         <p th:text="${courseHasBeenSavedInfo}"/>
 
         <p><input type="submit" value="Submit" class="btn"/> <input type="reset" value="Reset" class="btn"/></p>
-</form>
+    </form>
     <a th:href="@{'/course'(id=${course.id})}">
-    <button class="btn-back">back</button>
+        <button class="btn-back">back</button>
     </a>
 
-    </div>
+</div>
 </body>
 </html>

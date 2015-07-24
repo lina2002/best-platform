@@ -9,8 +9,10 @@
 </head>
 <body>
 <a th:href="@{'/courses'(id=${course.id})}">
-    <button class="btn-back">Back</button><br/><br/>
+    <button class="btn-back">Back</button>
+    <br/><br/>
 </a>
+
 <div id="container">
     <h2 th:text="${course.name}"/>
 

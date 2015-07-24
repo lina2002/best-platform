@@ -9,8 +9,9 @@
 </head>
 <body>
 <h1>Add</h1>
+
 <div class="container">
-<form action="#" th:action="@{/add}" th:object="${course}" method="post">
+    <form action="#" th:action="@{/add}" th:object="${course}" method="post">
 
         <p>Name: <input type="text" th:field="*{name}"/></p>
         <textarea rows="4" cols="50" th:field="*{description}"></textarea>
@@ -19,11 +20,11 @@
 
         <p><input type="submit" value="Submit" class="btn"/> <input type="reset" value="Reset" class="btn"/></p>
 
-</form>
+    </form>
 
-<a th:href="@{'/courses'}">
-    <button class="btn-back">back</button>
-</a>
+    <a th:href="@{'/courses'}">
+        <button class="btn-back">back</button>
+    </a>
 </div>
 </body>
 </html>
