@@ -23,14 +23,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         -only allows role ADMIN to view /edit
          */
 
-        http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
         http
                 .authorizeRequests()
-                .antMatchers("/", "/courses", "/course", "/homepage").permitAll();
+                .antMatchers("/css/**", "/js/**", "/images/**")
+                .permitAll();
+        http
+                .authorizeRequests()
+                .antMatchers("/", "/courses", "/course")
+                .permitAll();
         http
                 .authorizeRequests()
                 .antMatchers("/homepage")
-                .hasRole("USER").anyRequest().authenticated() // 7
+                .hasRole("USER").anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -41,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/edit")
-                .hasRole("ADMIN").anyRequest().authenticated() // 7
+                .hasRole("ADMIN").anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")

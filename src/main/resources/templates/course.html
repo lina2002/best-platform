@@ -13,7 +13,7 @@
 
     <p th:text="${course.description}"/>
 
-    <a th:href="@{'edit'(id=${course.id})}">
+    <a th:href="@{'edit'(id=${course.id})}" sec:authorize="hasRole('ROLE_ADMIN')">
         <button class="btn">Edit</button>
     </a>
 </div>
