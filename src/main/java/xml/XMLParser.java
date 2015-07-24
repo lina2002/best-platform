@@ -1,5 +1,7 @@
-package platform;
+package xml;
 
+
+import platform.Course;
 
 import java.util.List;
 

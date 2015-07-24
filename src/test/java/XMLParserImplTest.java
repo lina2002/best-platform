@@ -1,6 +1,6 @@
 import org.junit.Test;
 import platform.Course;
-import platform.XMLParserImpl;
+import xml.XMLParserImpl;
 
 import java.util.List;
 
