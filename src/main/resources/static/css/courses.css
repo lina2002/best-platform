@@ -30,6 +30,8 @@ p#description {
     -webkit-box-shadow: 1px 1px 22px 9px rgba(200, 200, 200, 255);
     -moz-box-shadow: 1px 1px 22px 9px rgba(200, 200, 200, 255);
     box-shadow: 1px 1px 22px 9px rgba(200, 200, 200, 255);
+    height:12pt;
+    overflow:hidden;
 }
 
 .btn {
